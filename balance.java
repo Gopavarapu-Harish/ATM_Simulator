@@ -30,15 +30,20 @@ public class balance extends JFrame implements ActionListener{
         int balance=0;
         try{
             ResultSet rs=c.s.executeQuery("select * from bank where pin='"+pinNumber+"'");
-            while(rs.next()){
-                if(rs.getString("type").equals("deposit")){
-                    balance+=Integer.parseInt(rs.getString("amount"));
-                }
-                else{
-                    balance-=Integer.parseInt(rs.getString("amount"));
-                }
+            while (rs.next()) {
+                String amountStr = rs.getString("amount"); // Get amount from DB
+                if (amountStr != null && !amountStr.isEmpty()) { // Check if it's valid
+                    int amount = Integer.parseInt(amountStr); // Convert to int
+                    if (rs.getString("type").equals("deposit")) {
+                        balance += amount;
+                    } else {
+                        balance -= amount;
+                    }
+                } else {
+                    balance+=0;
                 }
             }
+        }            
             catch(Exception e){
                 e.printStackTrace();
             }
