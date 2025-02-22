@@ -1,6 +1,7 @@
 /*
- * compile: javac -cp ".:lib/*" login.java signupOne.java conn.java
- * Run: java -cp ".:lib/*" login
+ * javac -cp ".:lib/*" *.java
+ * java -cp ".:lib/*" login
+
  */
 
 import javax.swing.*;

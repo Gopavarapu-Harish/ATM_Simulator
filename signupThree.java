@@ -189,10 +189,13 @@ public class signupThree extends JFrame implements ActionListener{
             try{
                 if(AccountType.equals("")){
                     JOptionPane.showMessageDialog(null,"Account type is required");
+                    return;
                 }
                 if(services.equals("")){
                     JOptionPane.showMessageDialog(null,"choose atleast one service");
+                    return;
                 }
+            if(c7.isSelected()){
                 conn c=new conn();
                 String query1="Insert into signupthree values ('"+formno+"','"+AccountType+"','"+cnum+"','"+pnum+"','"+services+"')";
                 c.s.executeUpdate(query1);
@@ -203,6 +206,11 @@ public class signupThree extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null,"Card Number :"+cnum+"\n"+"Pin Number :"+pnum );
                 setVisible(false);
                 new deposit(pnum).setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"please click on below checkbox to confirm changes");
+                return; 
+            }
             }
             catch(Exception e){
                 e.printStackTrace();

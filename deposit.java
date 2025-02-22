@@ -53,6 +53,17 @@ public class deposit extends JFrame implements ActionListener{
         }
         if(ae.getSource()==deposit){
             String number=amount.getText();
+            try{
+                int a=Integer.parseInt(number);
+                if(a>1000000){
+                    JOptionPane.showMessageDialog(null,"sorry! please enter upto 1000000");
+                    return;
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"please enter amount in number format");
+                return;
+            }
             if(number==null || number.equals("") || Integer.parseInt(number)<=0){
                 JOptionPane.showMessageDialog(null,"Please enter valid amount");
             }
